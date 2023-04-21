@@ -2,40 +2,81 @@
 <html>
 <!-- Matomo -->
 <script type="text/javascript">
-  var _paq = window._paq || [];
-  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-  _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
-  _paq.push(["setCookieDomain", "*.jiemenglboro.github.io"]);
-  _paq.push(["setDomains", ["*.jiemenglboro.github.io/index.html"]]);
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-15345584-2']);
+  _gaq.push(['_trackPageview']);
+
   (function() {
-    var u="https://lborolondon.matomo.cloud/";
-    _paq.push(['setTrackerUrl', u+'matomo.php']);
-    _paq.push(['setSiteId', '2']);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.type='text/javascript'; g.async=true; g.defer=true; g.src='//cdn.matomo.cloud/lborolondon.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-</script>
-<noscript><p><img src="https://lborolondon.matomo.cloud/matomo.php?idsite=2&amp;rec=1" style="border:0;" alt="" /></p></noscript>
-<!-- End Matomo Code -->
 
-<!-- Matomo Image Tracker-->
-<img src="https://lborolondon.matomo.cloud/matomo.php?idsite=2&amp;rec=1" style="border:0" alt="" />
-<!-- End Matomo -->
-
-
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-85353560-2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-85353560-2');
 </script>
 
+<style>
+
+body{font-size:18px}
+
+* {box-sizing: border-box}
+
+/* Set height of body and the document to 100% */
+body, html {
+  height: 100%;
+  margin: 0pt;
+  font-family: Arial;
+}
+
+
+/* Style tab links */
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 11.1%;
+}
+
+.tablink:hover {
+  background-color: #777;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: black;
+  display: none;
+  padding: 100px 20px;
+  height: 100%;
+}
+
+#Home {background-color: white;}
+#News {background-color: white;}
+#Contact {background-color: white;}
+#About {background-color: white;}
+
+
+table, th, td {
+  border: 1px solid black;
+    padding: 10px;
+
+}
+table.center {
+  margin-left: auto; 
+  margin-right: auto;
+}
+
+</style>
+    
+<head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="google-site-verification" content="t6l2Xvt9najP0q4mY6MnIuQwE-TgIiuT5fcJNAjYDnI" />
+<title> Jie Meng at Loughborough University London </title>
+
+    </head>
 
 <body>
 <img src="photo/JMphoto.jpg" width="180" height="240" align="left" style="...">   
@@ -65,6 +106,17 @@ Tel: 0044-(0)2038051325 <br>
 <br>
 <br>
 
+<button class="tablink" onclick="openPage('Home', this, 'green')" id="defaultOpen">Home</button>
+<button class="tablink" onclick="openPage('Research Projects', this, 'red')" >Research Projects</button>
+<button class="tablink" onclick="openPage('Publications', this, 'blue')">Publications</button>
+<button class="tablink" onclick="openPage('PhD Supervision', this, 'green')">PhD Supervision</button>
+<button class="tablink" onclick="openPage('External Impact', this, 'red')">External Impact</button>
+<button class="tablink" onclick="openPage('Teaching and Service', this, 'blue')">Teaching and Service</button>
+
+    
+<div id="Home" class="tabcontent">
+  <p> 
+
 <h2>Short Bio.</h2>
 I am in Digital Technologies and work as the programme director of MSc Digital Marketing 
 at <a href="https://www.lborolondon.ac.uk/institutes/digital-technologies/">Institute of Digital Technologies </a>, 
@@ -72,9 +124,57 @@ at <a href="https://www.lborolondon.ac.uk/institutes/digital-technologies/">Inst
 Prior to Loughborough, I worked in the U.K. and Australia. 
 My current research concerns the consumer self, digital efficacy and digital wellbeing of electronic marketing, 
 including web content, social media, tech-based communication and AI recommendation. <br>
+    
+<h2>Call for Submission to Special Issue for "AI’s Contribution to New Insights of Digital Behaviour and Service Economy" in <a href= "https://www.frontiersin.org/research-topics/42571/ais-contribution-to-new-insights-of-digital-behavior-and-service-economy"> Frontiers in Artificial Intelligence </a>, Submission EXTENDED to Feb 16, 2023 </h2>
+<br> Guest Editor: Xiaowei Huang, Jie Meng, Shuang Ma and Chris (Ning) Chen <br>
+<br>
+<br>
+<h2>Call for Submission to Special Issue for "Digital Transformation" in <a href= "https://www.emeraldgrouppublishing.com/journal/intr"> Internet Research</a>, (Impact Factor 6.773), Submission due Sep 30, 2023 </h2>
+<br> Guest Editor: Yonggui Wang, Si Shi, Jie Meng, and Xiang (Robert) Li <br>
+<br>
+<h2>Call for Submissions to the MDPI Topic <a href ="https://www.mdpi.com/topics/social_network"> "Complex Networks and Social Networks"</a>, Topic Editor: Jie Meng, Xiaowei Huang, Minghui Qian, Zhixuan Xu, due in July 2024. </h2>
 <br>
 <br>
 <br>
+    
+<h2>Potential PhD <a href="https://lboro.onlinesurveys.ac.uk/phd-awards"> Opportunity</a>, </h2>
+PhD Studentships in Digital Technologies at Loughborough University London
+<br>
+The Institute for Digital Technologies at Loughborough University London aims to address major technological 
+challenges, with a focus on machine learning, data analytics, Internet of Things, cyber security, intelligent mobility, 
+immersive and interactive technologies, 5G applications, and human behaviour analysis. It has secured funding for three 
+full-time PhD studentships working on these exciting research areas for three years, opening to all UK/EU applicants 
+and starting in October 2019. In particular, there are a few areas of interests regarding computational advertising and 
+intelligent new media that I would like to recruit PhD students. <br>
+<br>
+<br>
+<br>
+If you are interested in doing a PhD in <a href= "https://www.lboro.ac.uk/study/postgraduate/apply/research-applications/">the 
+relevant research areas with me </a>, please feel free to contact me. Loughborough University has a set of established 
+scholarship schemes, including Loughborough china scholarship council scheme (with the expected internal application 
+deadline in Jan 2020 and the external application deadline in March 2020) and <a href= "https://scholarship-positions.com/loughborough-university-great-china-scholarships-uk/2018/10/18/"> Loughborough University Great China Scholarships in UK </a>.  
+The key scholarship schemes are listed as follows.<br>
+<br>
+•	PGR loans <br>
+•	Wellcome Trust <br>
+•	British Council (Newton fund)  <br>
+•	Commonwealth Scholarships <br>
+•	Chinese Scholarship Council <br>
+•	Petroleum Technology Development Fund (PTDF)<br>
+•	Niger Delta Development Commission (NDDC) or Tertiary Education Trust (TET)<br>
+•	Research Councils (CDT, DTP and iCASE awards)<br>
+
+<br>
+<br>
+<br>
+    
+</div>    
+
+
+    
+<div id="Research Projects" class="tabcontent">
+  <p> 
+      
 <h2>Current Research Project</h2>
 1. Computational advertising on smart new media and recommendation system <br>
 2. Online information exchange and social impacts, Cookies marketing and data ecosystem <br>
@@ -82,7 +182,11 @@ including web content, social media, tech-based communication and AI recommendat
 4. <a href= "https://www.lborolondon.ac.uk/research/digital-technologies/current-research/self-construal-and-projection-on-brand-image-in-digitalised-advertising-and-customer-recommendation/"> Brand image, self-construal and projection on individual behaviours </a> <br>
 5. <a href= "https://www.lborolondon.ac.uk/research/digital-technologies/current-research/anthropomorphistic-digital-agencys-human-related-affection/">Content engagement in marketing/retailing context via using eye-tracking </a> <br>
 
-<br>
+</div>
+    
+
+    
+<div id="PhD Supervision" class="tabcontent">
 <h2>Current PhD Students</h2>
 •	Ying Feng (3rd year), Project: Experiementalisation and Theorisation of Digital Agency in Web-based Communication<br>
 •	Ijeoma Ogiemwonyi(2nd year), Project:Cookieless Advertising and Optimisation <br>
@@ -101,17 +205,22 @@ including web content, social media, tech-based communication and AI recommendat
 <br>
 <br>
 <br>
-<h2>Call for Submission to Special Issue for "AI’s Contribution to New Insights of Digital Behaviour and Service Economy" in <a href= "https://www.frontiersin.org/research-topics/42571/ais-contribution-to-new-insights-of-digital-behavior-and-service-economy"> Frontiers in Artificial Intelligence </a>, Submission EXTENDED to Feb 16, 2023 </h2>
-<br> Guest Editor: Xiaowei Huang, Jie Meng, Shuang Ma and Chris (Ning) Chen <br>
+    <h2>Visitors</h2>
+Dr. <a href="http://mrcc.ruc.edu.cn/?team=%E5%AD%99%E4%B9%83%E5%A8%9F"> Naijuan Sun </a>, Associate Professor, 
+Heilongjiang University, Associate Research Fellow of <a href= "http://mrcc.ruc.edu.cn/"> Marketing Research Centre of 
+China (MRCC)</a> <br>
+<br>
+Prof. <a href="http://irm.ruc.edu.cn/teachermore.php?cid=8&id=39"> Minghui Qian </a>, Associate Professor, School of Information Resource Management, 
+Remin University of China, Director of <a href= "http://mrcc.ruc.edu.cn/"> Marketing Research Centre of 
+China (MRCC)</a> <br><br>
 <br>
 <br>
-<h2>Call for Submission to Special Issue for "Digital Transformation" in <a href= "https://www.emeraldgrouppublishing.com/journal/intr"> Internet Research</a>, (Impact Factor 6.773), Submission due Sep 30, 2023 </h2>
-<br> Guest Editor: Yonggui Wang, Si Shi, Jie Meng, and Xiang (Robert) Li <br>
-<br>
-<h2>Call for Submissions to the MDPI Topic <a href ="https://www.mdpi.com/topics/social_network"> "Complex Networks and Social Networks"</a>, Topic Editor: Jie Meng, Xiaowei Huang, Minghui Qian, Zhixuan Xu, due in July 2024. </h2>
-<br>
-<br>
-<br>
+    
+
+    </div>
+    
+<div id="Publications" class="tabcontent">
+    
 <h2>Publications</h2>
 <br>
 <h3> Recent Publications /Accepted Papers</h3><br>
@@ -203,6 +312,10 @@ Marketing Academy Conference (ANZMAC), 2008, Sydney, Australia.<br>
 <br>
 <br>
 <br>
+    </div>
+    
+<div id="Research Projects" class="tabcontent">
+    
 <h2>Recent Funding and Grants</h2>
 <h3>“Test Coverage Metrics for Artificial Intelligence - V2.0”</h3>
 Funding Body: DsTL <br>
@@ -222,48 +335,12 @@ Duration: 2018-2021 <br>
 Fund: RMB￥750,000<br>	
 Completed <br>
 
+    </div>
+    
 
-<h2>Potential PhD <a href="https://lboro.onlinesurveys.ac.uk/phd-awards"> Opportunity</a>, </h2>
-PhD Studentships in Digital Technologies at Loughborough University London
-<br>
-The Institute for Digital Technologies at Loughborough University London aims to address major technological 
-challenges, with a focus on machine learning, data analytics, Internet of Things, cyber security, intelligent mobility, 
-immersive and interactive technologies, 5G applications, and human behaviour analysis. It has secured funding for three 
-full-time PhD studentships working on these exciting research areas for three years, opening to all UK/EU applicants 
-and starting in October 2019. In particular, there are a few areas of interests regarding computational advertising and 
-intelligent new media that I would like to recruit PhD students. <br>
-<br>
-<br>
-<br>
-If you are interested in doing a PhD in <a href= "https://www.lboro.ac.uk/study/postgraduate/apply/research-applications/">the 
-relevant research areas with me </a>, please feel free to contact me. Loughborough University has a set of established 
-scholarship schemes, including Loughborough china scholarship council scheme (with the expected internal application 
-deadline in Jan 2020 and the external application deadline in March 2020) and <a href= "https://scholarship-positions.com/loughborough-university-great-china-scholarships-uk/2018/10/18/"> Loughborough University Great China Scholarships in UK </a>.  
-The key scholarship schemes are listed as follows.<br>
-<br>
-•	PGR loans <br>
-•	Wellcome Trust <br>
-•	British Council (Newton fund)  <br>
-•	Commonwealth Scholarships <br>
-•	Chinese Scholarship Council <br>
-•	Petroleum Technology Development Fund (PTDF)<br>
-•	Niger Delta Development Commission (NDDC) or Tertiary Education Trust (TET)<br>
-•	Research Councils (CDT, DTP and iCASE awards)<br>
+<div id="External Impact" class="tabcontent">
 
-<br>
-<br>
-<br>
 
-<h2>Visitors</h2>
-Dr. <a href="http://mrcc.ruc.edu.cn/?team=%E5%AD%99%E4%B9%83%E5%A8%9F"> Naijuan Sun </a>, Associate Professor, 
-Heilongjiang University, Associate Research Fellow of <a href= "http://mrcc.ruc.edu.cn/"> Marketing Research Centre of 
-China (MRCC)</a> <br>
-<br>
-Prof. <a href="http://irm.ruc.edu.cn/teachermore.php?cid=8&id=39"> Minghui Qian </a>, Associate Professor, School of Information Resource Management, 
-Remin University of China, Director of <a href= "http://mrcc.ruc.edu.cn/"> Marketing Research Centre of 
-China (MRCC)</a> <br><br>
-<br>
-<br>
 <h2>Workshop Organisation</h2>
 <br>
 (July-August/2019) Workshop on Digital Analytics and Simulation Research for MRes and doctoral students, 
@@ -281,6 +358,11 @@ China (MRCC)</a> <br><br>
 <br>
 <br>
 <br>
+    
+    </div>
+    
+<div id="Teaching and Service" class="tabcontent">
+
 
 <h2>Teaching Calibre </h2>
 <br>
@@ -317,6 +399,31 @@ China (MRCC)</a> <br><br>
 <br>
 <br>
 <br>
+    </div>
+    
+    
+    
+<script>
+function openPage(pageName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(pageName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+
+
+
 
 </body>
 </html>

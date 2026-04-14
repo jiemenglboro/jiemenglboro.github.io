@@ -1,533 +1,1093 @@
 <!DOCTYPE html>
-<html>
-<!-- Matomo -->
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-15345584-2']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="t6l2Xvt9najP0q4mY6MnIuQwE-TgIiuT5fcJNAjYDnI" />
+<title>Jie Meng — Reader in Digital Psychology & Behaviour</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-
-body{font-size:14px}
-
-* {box-sizing: border-box}
-
-/* Set height of body and the document to 100% */
-body, html {
-  height: 100%;
-  margin: 0pt;
-  font-family: Aptos;
+:root {
+  --ink: #0e0e0e;
+  --paper: #f5f2eb;
+  --paper-warm: #ede8dc;
+  --accent: #8b3a1a;
+  --accent-light: #c4703f;
+  --rule: #ccc4b0;
+  --muted: #7a7060;
+  --highlight: #d4b896;
+  --nav-bg: #1a1612;
+  --nav-text: #e8e0d0;
 }
 
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* Style tab links */
-.tablink {
-  background-color: #555;
-  color: white;
-  float: left;
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ─── HEADER ─────────────────────────────────────────── */
+.header {
+  background: var(--nav-bg);
+  color: var(--nav-text);
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 2px solid var(--accent);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 56px;
+}
+
+.header-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--nav-text);
+  white-space: nowrap;
+}
+
+.header-name span {
+  color: var(--accent-light);
+  font-style: italic;
+}
+
+nav {
+  display: flex;
+  gap: 0;
+}
+
+.nav-btn {
+  background: none;
   border: none;
-  outline: none;
+  color: var(--nav-text);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0 1.1rem;
+  height: 56px;
   cursor: pointer;
-  padding: 14px 16px;
-  font-size: 17px;
-  width: 11.1%;
+  opacity: 0.65;
+  transition: opacity 0.2s, background 0.2s;
+  white-space: nowrap;
 }
 
-.tablink:hover {
-  background-color: #777;
+.nav-btn:hover { opacity: 1; background: rgba(255,255,255,0.05); }
+.nav-btn.active { opacity: 1; color: var(--accent-light); border-bottom: 2px solid var(--accent-light); }
+
+/* ─── HERO ─────────────────────────────────────────────── */
+.hero {
+  background: var(--nav-bg);
+  color: var(--nav-text);
+  padding: 4rem 2rem 3.5rem;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Style the tab content (and add height:100% for full page content) */
-.tabcontent {
-  color: black;
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 39px,
+    rgba(255,255,255,0.03) 40px
+  );
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 3rem;
+  align-items: start;
+  position: relative;
+}
+
+.hero-photo {
+  width: 180px;
+  height: 240px;
+  object-fit: cover;
+  border: 3px solid var(--accent);
+  display: block;
+  filter: sepia(15%);
+  transition: filter 0.4s;
+}
+
+.hero-photo:hover { filter: sepia(0%); }
+
+.photo-placeholder {
+  width: 180px;
+  height: 240px;
+  border: 3px solid var(--accent);
+  background: #2a2420;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+.hero-text h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  font-weight: 300;
+  line-height: 1.1;
+  color: #f0e8d8;
+  margin-bottom: 0.4rem;
+}
+
+.hero-text h1 em {
+  font-style: italic;
+  color: var(--highlight);
+}
+
+.hero-creds {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--accent-light);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.hero-role {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #b8a890;
+  margin-bottom: 1.5rem;
+  border-left: 2px solid var(--accent);
+  padding-left: 1rem;
+}
+
+.hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-link {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: var(--nav-text);
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 0.35rem 0.8rem;
+  transition: border-color 0.2s, color 0.2s;
+  text-transform: uppercase;
+}
+
+.hero-link:hover { border-color: var(--accent-light); color: var(--accent-light); }
+
+.hero-address {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  color: #6e6455;
+  line-height: 1.8;
+  letter-spacing: 0.04em;
+}
+
+/* ─── RESEARCH INTERESTS BANNER ───────────────────────── */
+.interests-bar {
+  background: var(--accent);
+  padding: 2.5rem 2rem;
+  overflow: hidden;
+}
+
+.interests-bar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.interests-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 1.2rem;
+}
+
+.interest-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.pill {
+  background: rgba(0,0,0,0.25);
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  padding: 0.4rem 1rem;
+  border-radius: 0;
+  border: 1px solid rgba(255,255,255,0.25);
+  letter-spacing: 0.02em;
+  transition: background 0.2s;
+  cursor: default;
+}
+
+.pill:hover { background: rgba(0,0,0,0.4); }
+
+.pill.primary {
+  background: rgba(255,255,255,0.18);
+  font-weight: 500;
+  border-color: rgba(255,255,255,0.5);
+}
+
+/* ─── MAIN CONTENT ─────────────────────────────────────── */
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+}
+
+.tab-section {
   display: none;
-  padding: 100px 18px;
-  height: 100%;
+  padding-top: 3rem;
+  animation: fadeUp 0.4s ease both;
 }
 
-#Home {background-color: white;}
-#News {background-color: white;}
-#Contact {background-color: white;}
-#About {background-color: white;}
+.tab-section.active { display: block; }
 
-
-table, th, td {
-  border: 1px solid black;
-    padding: 10px;
-
-}
-table.center {
-  margin-left: auto; 
-  margin-right: auto;
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
+/* ─── SECTION TITLES ───────────────────────────────────── */
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--ink);
+  margin-bottom: 0.3rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.section-title + .section-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.subsection-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 2.5rem 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.subsection-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+/* ─── BIO ───────────────────────────────────────────────── */
+.bio-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.bio-full { grid-column: 1 / -1; }
+
+.bio-text p {
+  color: #333;
+  margin-bottom: 1.1rem;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.highlight-card {
+  background: var(--paper-warm);
+  border-left: 3px solid var(--accent);
+  padding: 1.2rem 1.4rem;
+  margin-top: 2rem;
+}
+
+.highlight-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+
+.highlight-card p, .highlight-card a {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.highlight-card a { color: var(--accent); }
+
+/* ─── RESEARCH PROJECTS ────────────────────────────────── */
+.grant-card {
+  border: 1px solid var(--rule);
+  padding: 1.4rem 1.6rem;
+  margin-bottom: 1.2rem;
+  background: white;
+  position: relative;
+  transition: box-shadow 0.2s;
+}
+
+.grant-card:hover { box-shadow: 4px 4px 0 var(--accent); }
+
+.grant-status {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.4rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid;
+}
+
+.grant-status.ongoing { color: #2d6a4f; border-color: #2d6a4f; background: #d8f3dc; }
+.grant-status.completed { color: var(--muted); border-color: var(--rule); }
+.grant-status.awarded { color: var(--accent); border-color: var(--accent); background: #fdf0e8; }
+
+.grant-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+  padding-right: 6rem;
+}
+
+.grant-meta {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 0.3rem 1.5rem;
+  margin-top: 0.6rem;
+}
+
+.grant-meta span { white-space: nowrap; }
+
+.grant-fund {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-top: 0.5rem;
+}
+
+/* ─── PUBLICATIONS ─────────────────────────────────────── */
+.pub-item {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 0.8rem;
+  align-items: start;
+}
+
+.pub-year {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  padding-top: 0.2rem;
+  text-align: right;
+}
+
+.pub-content {}
+
+.pub-title {
+  font-size: 0.93rem;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.4;
+  margin-bottom: 0.25rem;
+}
+
+.pub-title a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--muted);
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.pub-title a:hover { color: var(--accent); border-color: var(--accent); }
+
+.pub-authors {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.pub-journal {
+  font-size: 0.8rem;
+  color: var(--accent);
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.03em;
+  margin-top: 0.15rem;
+}
+
+/* ─── PHD ──────────────────────────────────────────────── */
+.phd-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.phd-card {
+  border: 1px solid var(--rule);
+  padding: 1rem 1.2rem;
+  background: white;
+}
+
+.phd-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--ink);
+  margin-bottom: 0.25rem;
+}
+
+.phd-project {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.phd-status {
+  display: inline-block;
+  margin-top: 0.4rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.5rem;
+  border: 1px solid;
+}
+
+.phd-status.completed { color: #2d6a4f; border-color: #2d6a4f; }
+.phd-status.near { color: var(--accent); border-color: var(--accent); }
+.phd-status.active { color: #1a4480; border-color: #1a4480; }
+.phd-status.first { color: var(--muted); border-color: var(--muted); }
+
+/* ─── IMPACT / SERVICE ─────────────────────────────────── */
+.list-clean {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.list-clean li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.88rem;
+  color: #333;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.list-clean li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--accent-light);
+  font-size: 0.75rem;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+/* ─── FOOTER ────────────────────────────────────────────── */
+.footer {
+  background: var(--nav-bg);
+  color: #6e6455;
+  padding: 2rem;
+  text-align: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  margin-top: 4rem;
+  border-top: 2px solid var(--accent);
+}
+
+/* ─── RESPONSIVE ──────────────────────────────────────── */
+@media (max-width: 820px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-photo, .photo-placeholder { margin: 0 auto; }
+  .hero-text h1 { font-size: 2rem; }
+  .bio-grid, .two-col, .phd-grid { grid-template-columns: 1fr; }
+  .bio-full { grid-column: 1; }
+  nav { overflow-x: auto; }
+  .nav-btn { font-size: 0.6rem; padding: 0 0.7rem; }
+  .grant-meta { grid-template-columns: 1fr; }
+  .header-name { font-size: 0.9rem; }
+}
 </style>
-    
-<head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<meta name="google-site-verification" content="t6l2Xvt9najP0q4mY6MnIuQwE-TgIiuT5fcJNAjYDnI" />
-<title> Jie Meng at Loughborough University London </title>
-
-    </head>
-
+</head>
 <body>
-<img src="photo/JMphoto.jpg" width="180" height="240" align="left" style="...">   
-<h1>Jie Meng Ph.D., MSc, BEng, SFHEA, PGCT, CMBE</h1>
-<h5> - Reader in Digital Psychology and Behaviour <br>
-<h5> - Research Specialty: Informative, Psychological and Behavioural Analysis in Digital and Virtual Environment, Human-Computer Analysis, Large Language Models <br>
-<h5> - Programme Director of MSc Digital Marketing, IDT. <h3>
-<h5> <a href= "https://scholar.google.co.uk/citations?hl=en&user=T2zbMHgAAAAJ&view_op=list_works&gmla=AJsN-F5rmp-kzJeZK_q2s217Uz-m9hKVELW3woIu62M2YSLRQhC5pmvzXOWAAPxWmwujT_c3Wl2JFamxOVu94cx7YjPw_Pn4FByfgpkYLeWwguqJrsTW7_s"> Google Scholar Profile </a><br>
-<h5> <a href= "https://www.linkedin.com/in/jie-meng-9a526430/?originalSubdomain=uk"> Linkedin Profile </a> <br>
-<h5> <a href= "https://www.researchgate.net/profile/Jie-Meng-50"> Researchgate Profile </a><br>
-<h3><a href="https://www.lborolondon.ac.uk/institutes/digital-technologies/">Institute of Digital Technologies</a>,<br>
-<a href="https://www.lborolondon.ac.uk/research/">Loughborough University London</a>,<br>
-<br>
-<br>
-<br>
-Lesney Avenue<br>
-The Broadcast Centre<br>
-Here East <br>
-Queen Elizabeth Olympic Park<br>
-Stratford<br>
-United Kingdom, 
-E20 3BS</h3>
 
-Email: j.meng at lboro.ac.uk, mktmeng at gmail.com <br>
-Tel: 0044-(0)2038051325 <br>
-<h3> <a href= "https://www.lborolondon.ac.uk/about/staff/dr-jie-meng/"> Institutional Webpage </a> <br>
-<br>
-<br>
-<br>
+<!-- ─── STICKY NAV ──────────────────────────────────────── -->
+<header class="header">
+  <div class="header-inner">
+    <div class="header-name">Jie Meng &mdash; <span>Loughborough University London</span></div>
+    <nav>
+      <button class="nav-btn active" onclick="showTab('home', this)">Home</button>
+      <button class="nav-btn" onclick="showTab('research', this)">Research</button>
+      <button class="nav-btn" onclick="showTab('publications', this)">Publications</button>
+      <button class="nav-btn" onclick="showTab('phd', this)">PhD</button>
+      <button class="nav-btn" onclick="showTab('impact', this)">Impact</button>
+      <button class="nav-btn" onclick="showTab('teaching', this)">Teaching</button>
+    </nav>
+  </div>
+</header>
 
-<button class="tablink" onclick="openPage('Home', this, 'green')" id="defaultOpen">Home</button>
-<button class="tablink" onclick="openPage('Research Projects', this, 'red')" >Research Projects</button>
-<button class="tablink" onclick="openPage('Publications', this, 'blue')">Publications</button>
-<button class="tablink" onclick="openPage('PhD Supervision', this, 'green')">PhD Supervision</button>
-<button class="tablink" onclick="openPage('External Impact', this, 'red')">External Impact</button>
-<button class="tablink" onclick="openPage('Teaching and Service', this, 'blue')">Teaching and Service</button>
+<!-- ─── HERO ─────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <img src="photo/JMphoto.jpg" alt="Dr Jie Meng" class="hero-photo"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="photo-placeholder" style="display:none;">[ J.M. ]</div>
+    </div>
+    <div class="hero-text">
+      <div class="hero-creds">SFHEA · PGCT · CMBE</div>
+      <h1>Jie <em>Meng</em><br>Ph.D., MSc, BEng</h1>
+      <div class="hero-role">
+        Reader in Digital Psychology &amp; Behaviour<br>
+        Programme Director, MSc Digital Marketing<br>
+        Institute of Digital Technologies, Loughborough University London
+      </div>
+      <div class="hero-links">
+        <a href="https://scholar.google.co.uk/citations?hl=en&user=T2zbMHgAAAAJ&view_op=list_works" class="hero-link" target="_blank">Google Scholar</a>
+        <a href="https://www.linkedin.com/in/jie-meng-9a526430/?originalSubdomain=uk" class="hero-link" target="_blank">LinkedIn</a>
+        <a href="https://www.researchgate.net/profile/Jie-Meng-50" class="hero-link" target="_blank">ResearchGate</a>
+        <a href="https://www.lborolondon.ac.uk/about/staff/dr-jie-meng/" class="hero-link" target="_blank">Institutional Page</a>
+      </div>
+      <div class="hero-address">
+        Institute of Digital Technologies &nbsp;·&nbsp; The Broadcast Centre, Here East<br>
+        Queen Elizabeth Olympic Park, Stratford, London E20 3BS, UK<br>
+        j.meng@lboro.ac.uk &nbsp;·&nbsp; +44 (0)20 3805 1325
+      </div>
+    </div>
+  </div>
+</section>
 
-    
-<div id="Home" class="tabcontent">
-  <p> 
-
-<h2>Short Bio.</h2>
-
-As a techno-psychological and behavioural expert specialising in innovation of Human-Computer Interaction (HCI), my career is driven by a deep curiosity about the dynamic interplay between technology and human behaviour. This passion spans diverse domains, including digital marketing, immersive gaming, e-sports, education, and AI-mediated communication. My research integrates psychological and behavioural experimentation with advanced simulation methodologies to examine critical outcomes such as user engagement, information diffusion, AI-driven persuasion, and collective performance metrics, with a strong emphasis on equality, inclusivity, and well-being.<br>
-<br>
-<br>
-Since joining Loughborough University, my work has gained international recognition, with a significant surge since 2022. I have pioneered an interdisciplinary research area bridging neuroscience and informatics, exploring cognitive and emotional responses to AI tools. My publications in high-impact journals across marketing, information management, and HCI demonstrate my commitment to addressing complex challenges at the intersection of technology, psychology, and society.<br>
-<br>
-<br>
-Beyond research, I am passionate about developing future leaders and innovators. I have successfully mentored a growing cohort of doctoral and postgraduate students, many of whom have secured academic positions in the UK and China. These achievements inspire me to maintain an inclusive, supportive, and intellectually stimulating environment, aligned with Loughborough’s EDI principles.<br>
-<br>
-<br>
-My leadership extends within and beyond the University. As the Chief Programme Director and Programme Director for MSc Digital Marketing, I have shaped curricula that integrate creative media, neuroscience/behavioural science, HCI and generative AI, preparing graduates for the evolving digital economy. I actively contribute to strategic initiatives at Loughborough London, fostering industry partnerships, interdisciplinary collaborations, and knowledge exchange. Externally, I have led international research projects funded by DsTL, GRF, and NSFC, advancing global conversations on AI ethics, neurodiversity, and sustainable innovation.<br>
-<br>
-<br>
-Looking ahead, my aspiration is to lead interdisciplinary, collaborative, and sustainable initiatives that connect technology with human-centric solutions, promoting well-being, equity, and societal harmony. This vision resonates strongly with Loughborough University Strategy 2030, as I strive to push boundaries in research, education, and leadership, ensuring that digital advancements serve as a force for inclusive and positive change worldwide. <br>
-<br>
-<br>
-    
-
-<h2>Guest Editorship for the Special Issue for <a href= "https://www.emerald.com/intr/issue/35/4">"Digital Transformation of Firms" </a> in <a href= "https://www.emeraldgrouppublishing.com/journal/intr"> Internet Research</a>, (Impact Factor 6.773), Published as Volume 35, Issue 4, Pages 1429-1721. </h2>
-<br> Guest Editor: Yonggui Wang, Si Shi, Xiang (Robert) Li, and Jie Meng <br>
-<br>
-<h2>Contribute to the MDPI Topic <a href ="https://www.mdpi.com/topics/social_network"> "Complex Networks and Social Networks"</a>, Topic Editor: Jie Meng, Xiaowei Huang, Minghui Qian, Zhixuan Xu, 2024. </h2>
-<br>
-<br>
-<br>
-    
-<h2>Potential PhD Opportunity </h2>
-PhD Studentships in Digital Technologies at Loughborough University London
-<br>
-The Institute for Digital Technologies at Loughborough University London aims to address major technological 
-challenges, with a focus on machine learning, data analytics, Internet of Things, cyber security, intelligent mobility, 
-immersive and interactive technologies, 5G applications, and human behaviour analysis. It has secured funding for three 
-full-time PhD studentships working on these exciting research areas for three years, opening to all UK/EU applicants 
-and starting in October 2019. In particular, there are a few areas of interests regarding computational advertising and 
-intelligent new media that I would like to recruit PhD students. <br>
-<br>
-<br>
-<br>
-If you are interested in doing a PhD in <a href= "https://www.lboro.ac.uk/study/postgraduate/apply/research-applications/">the 
-relevant research areas with me </a>, please feel free to contact me. Loughborough University has a set of established 
-scholarship schemes, including Loughborough china scholarship council scheme (with the expected internal application 
-deadline in Jan 2020 and the external application deadline in March 2020) and <a href= "https://scholarship-positions.com/loughborough-university-great-china-scholarships-uk/2018/10/18/"> Loughborough University Great China Scholarships in UK </a>.  
-The key scholarship schemes are listed as follows.<br>
-<br>
-•	PGR loans <br>
-•	Wellcome Trust <br>
-•	British Council (Newton fund)  <br>
-•	Commonwealth Scholarships <br>
-•	Chinese Scholarship Council <br>
-•	Petroleum Technology Development Fund (PTDF)<br>
-•	Niger Delta Development Commission (NDDC) or Tertiary Education Trust (TET)<br>
-•	Research Councils (CDT, DTP and iCASE awards)<br>
-
-<br>
-<br>
-<br>
-    
-</div>    
-
-
-    
-<div id="Research Projects" class="tabcontent">
-  <p> 
-      
-<h2>Current Research Project</h2>
-<br>
-1. Computational advertising on smart new media and recommendation system <br>
-2. Online information exchange and social impacts, Cookies marketing and data ecosystem <br>
-3. Cognitive diversity and AI, multimodal learning for equality, diversity and inclusiveness <br>
-4. Brand image, self-construal and projection on individual behaviours <br>
-5. Content engagement in marketing/retailing context via using eye-tracking <br>
-6. Human-AI collaboration and practices in various scenarios <br>
-7. LLMs and applications in agent-human communication and human behaviour simulation <br>
-<br>
-<br>
-<br>
-<br>
-<h2> Research Funding </h2>
-<br>
-Alignment Project: "Rare-Event Estimation in Large Language Models via Subset Simulation and Contrastive Unalignment"<br>
-Funding Body:EPSRC - AISI <br>
-Investigators: Xiaowei Huang- PI in Liverpool, Jie Meng -PI in Loughborough <br>
-Duration: March 2026 - March 2027(started)<br>
-Fund: Total fund: 249,941.32 GBP, Awarded<br>
-<br>
-“A Re-investigation of Personality’s Role in AI-Advertising Era” <br>
-Funding Body: Loughborough University London Mid-Career Research Development Grant <br>
-Role: PI <br>
-Duration: March - July 2025<br>
-Research Income: GBP £7,500<br>
-<br>
-"Unlocking Potential: Enhancing AI Training with Consideration of Trainees’ Neurodiversity and Proactive Personality"<br>
-Funding Body:  General Research Fund (GRF) <br>
-Project Number :  13504225 <br>
-Exercise Year:   January 2026-December 2028 <br>
-Investigators:   Prof CHEN, Yifeng Nancy (PI), Jie Meng (CI), Mike Crant (CI) <br>
-Research Income:    HK$820,000<br>
-<br>
-"The Impact of Government and Enterprise Product Replacement Incentive Strategies on the Disbelief of Green Smart Product Upgrade Purchases: A Perspective Based on Normative Expectancy Theory"<br>
-Funding Body: National Science Foundation of China, NSFC<br>
-Investigators: Shuang Ma (PI), Ying Hua (CI), Fenmian Wang (CI), Lei La (CI), Jie Meng (CI)<br>
-Duration: 2026-2029<br>
-Number: 72572033<br>
-Research Income:  CNY ¥ 480,000 <br>
-<br>
-“Automated Verification and Synthesis of Smart Factories”<br>
-Funding Body: National Natural Science Foundation of China Research (NSFC)<br>
-Investigators: Xiaowei Huang, Jie Meng, Ron van der Meyden <br>
-Duration: 2018-2021(completed)<br>
-Fund: RMB￥750,000, Awarded <br>
-<br>
-“Test Coverage Metrics for Artificial Intelligence - V2.0” <br>
-Funding Body: Defence Science and Technology Lab (DsTL), Ministry of Defence, UK <br>
-Investigators: Xiaowei Huang (Liverpool), Jie Meng (Loughborough), Youcheng Sun (QUB), Wenjie Ruan (Lancaster)
-Duration: 2019-2020 (completed)<br>
-Research Income: GBP £14,000 (Loughborough share) <br>
-<br>
+<!-- ─── RESEARCH INTERESTS BANNER ───────────────────────── -->
+<div class="interests-bar">
+  <div class="interests-bar-inner">
+    <div class="interests-label">Research Interests</div>
+    <div class="interest-pills">
+      <span class="pill primary">Human–Computer Interaction</span>
+      <span class="pill primary">Large Language Models &amp; AI Behaviour</span>
+      <span class="pill primary">Digital Psychology</span>
+      <span class="pill primary">Computational Advertising</span>
+      <span class="pill">AI Safety &amp; Guardrails for LLMs</span>
+      <span class="pill">Cognitive &amp; Neurodiversity in AI</span>
+      <span class="pill">Eye-Tracking &amp; Neuromarketing</span>
+      <span class="pill">Immersive Technologies (AR/VR/Metaverse)</span>
+      <span class="pill">Social Media &amp; Information Diffusion</span>
+      <span class="pill">Virtual Influencers &amp; Digital Agents</span>
+      <span class="pill">Consumer Behaviour &amp; E-Commerce</span>
+      <span class="pill">Agent-Based Modelling &amp; Simulation</span>
+      <span class="pill">Cookies, Privacy &amp; Data Ecosystems</span>
+      <span class="pill">Digital Identity &amp; Self-Construal</span>
+      <span class="pill">AI-Mediated Communication</span>
+      <span class="pill">Equality, Diversity &amp; Wellbeing in Tech</span>
+    </div>
+  </div>
 </div>
-    
 
-    
-<div id="PhD Supervision" class="tabcontent">
-<h2>Current PhD Students</h2>
-•	Ying Feng (completed), Project: Experimentalisation and Theorisation of Digital Agency in Web-based Communication<br>
-•	Ijeoma Ogiemwonyi(completed), Project: Cookieless Advertising and Optimisation <br>
-•	Yilin Feng (near completion), Project: User Recommendation and Marketing Systems <br>
-•	Simon Akudinobi (near completion), Project: From Pixels to Personas: How Anthropomorphism Shapes Perceptions of Virtual Influencers’ Authenticity and Credibility <br>
-•	En Chen (3rd year), Project: Content Recommendation and Behavioural Outcomes of Cognitive Diversity <br>
-•	Junding Liu (3rd year), Project: NFT and Network Transformation <br>
-•	Yuexiang Wang (2nd year), Project: Granular Data and Digital Affordance in M-Commerce<br>
-•	Weiyi Tian (2nd year), Project: How AI Collaborates with Cognitive and Affective Diversity <br>
-•	Liang Xie (1st year), Project: Gen-AI and Emotive Transfer via Multi-sensory Modelling <br>
-•	Victor Drummond (1st year), Project: AI, health awareness and self-care <br>
+<!-- ─── MAIN ─────────────────────────────────────────────── -->
+<div class="main">
 
+  <!-- HOME ── -->
+  <div id="tab-home" class="tab-section active">
 
-<br>
-<br>
-<br>
-<h2>Loughborough University and China Scholarship Council (CSC） Scholarship Opportunity</h2>
-•	Loughborough University will co-sponsor PhD studeis in the listed schools, as seen from the university scholarship infomation <a href='https://www.lboro.ac.uk/study/postgraduate/fees-funding/research-degree-funding/china-scholarship-council/'> webpage </a> <br>
-•	2024-2025 academic year's CSC-LU scholarship information is to be released once available.<br>
-•	Dealine of application is usually at the end of Jan if to target the Oct entry opportunity. <br>
-<br>
-<br>
-<br>
-    <h2>Visitors</h2>
-Dr. <a href="http://mrcc.ruc.edu.cn/?team=%E5%AD%99%E4%B9%83%E5%A8%9F"> Naijuan Sun </a>, Associate Professor, 
-Heilongjiang University, Associate Research Fellow of <a href= "http://mrcc.ruc.edu.cn/"> Marketing Research Centre of 
-China (MRCC)</a> <br>
-<br>
-Prof. <a href="http://irm.ruc.edu.cn/teachermore.php?cid=8&id=39"> Minghui Qian </a>, Associate Professor, School of Information Resource Management, 
-Remin University of China, Director of <a href= "http://mrcc.ruc.edu.cn/"> Marketing Research Centre of 
-China (MRCC)</a> <br><br>
-<br>
-Dr. Huan Yan, Researcher, Industrial Economics Institute of CASS <br>
-<br>
-<br>
-    
+    <h2 class="section-title">Short Bio</h2>
+    <p class="section-sub">Techno-psychological &amp; behavioural expertise</p>
 
+    <div class="bio-text">
+      <p>As a techno-psychological and behavioural expert specialising in Human–Computer Interaction (HCI), my career is driven by a deep curiosity about the dynamic interplay between technology and human behaviour. This passion spans digital marketing, immersive gaming, e-sports, education, and AI-mediated communication. My research integrates psychological and behavioural experimentation with advanced simulation methodologies to examine user engagement, information diffusion, AI-driven persuasion, and collective performance metrics, with a strong emphasis on equality, inclusivity, and well-being.</p>
+
+      <p>Since joining Loughborough University, my work has gained international recognition, with a significant surge since 2022. I have pioneered an interdisciplinary research area bridging neuroscience and informatics, exploring cognitive and emotional responses to AI tools. My publications in high-impact journals across marketing, information management, and HCI demonstrate my commitment to addressing complex challenges at the intersection of technology, psychology, and society.</p>
+
+      <p>Beyond research, I am passionate about developing future leaders and innovators. I have successfully mentored a growing cohort of doctoral and postgraduate students, many of whom have secured academic positions in the UK and China. My leadership extends within and beyond the University: as Chief Programme Director and Programme Director for MSc Digital Marketing, I have shaped curricula that integrate creative media, neuroscience/behavioural science, HCI, and generative AI, preparing graduates for the evolving digital economy.</p>
+
+      <p>I have led international research projects funded by EPSRC–AISI, DsTL, GRF, and NSFC, advancing global conversations on AI ethics, neurodiversity, and sustainable innovation. Looking ahead, my aspiration is to lead interdisciplinary, collaborative, and sustainable initiatives that connect technology with human-centric solutions, promoting well-being, equity, and societal harmony.</p>
     </div>
-    
-<div id="Publications" class="tabcontent">
-    
-<h2>Publications</h2>
-<br>
-<h3> Journal Paper </h3><br>
-•	Yu Shao, Jie Meng. "Beyond Consent: How Trust, Privacy Assurance, and Rewards Shape Consumer Data Sharing", Electronic Commerce Research and Applications, forthcoming 2026.<br>
-•	Ying Feng, Jun-Hwa Cheah, Tippayanet Sorosrungruang, Senmao Xia, Jie Meng. <a href = "https://www.emerald.com/intr/article-abstract/doi/10.1108/INTR-11-2024-1843/1338381/Can-AI-alleviate-loneliness-The-role-of?redirectedFrom=fulltext"> “Can AI Alleviate Loneliness? The Role of Psychological Closeness, Co-presence, and Enjoyment in Digital Workout Environment”</a>, Internet Research.<br>
-•	Ruyu Yun, Jie Meng. <a href = "https://www.tandfonline.com/doi/full/10.1080/10864415.2025.2556645"> “Investigating the Streamer’s Halo and Viewer’s Bandwagon Effects in Live Stream Sales” </a>, International Journal of Electronic Commerce.<br>
-•	Yi Dong, Ronghui Mu, Yanghao Zhang, Siqi Sun, Tianle Zhang, Changshun Wu, Gaojie Jin, Yi Qi, Jinwei Hu, Jie Meng, Saddek Bensalem, Xiaowei Huang. <a href = "https://link.springer.com/article/10.1007/s10462-025-11389-2"> “Safeguarding Large Language Models: A Survey” </a>, Artificial Intelligence Review.<br>
-•	Yonggui Wang, Si Shi, Xiang (Robert) Li, Jie Meng, <a href = "https://doi.org/10.1108/INTR-08-2025-996"> "Navigating the Digital Transformation Maze: An Editorial on Strategy, Execution, and Impact for Firms"</a>, Internet Research (ABS-3, Q1, IF 5.9).<br>
-•	En Chen, Jie Meng, Safak Dogan. <a href = "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4952973"> "Towards a Framework of AI-Driven Solution for Neurodiverse Learning: Cognition, Technologies and Wellbeing"</a>,(Pre-print)<br>
-•	Ying Feng, Jie Meng, Jun-Hwa Cheah. <a href = "https://doi.org/10.1002/mar.22154"> "From Virtual Trainers to Companions? Examining How Digital Agency Types, Anthropomorphism, and Support Shape Para-social Relationships in Online Fitness" </a>, Psychology and Marketing (2024). <br>
-•	Wei Huang, Yifan Zhou, Gaojie Jin, Youchen Sun, Jie Meng, Fan Zhang, Xiaowei Huang (2024). <a href = "https://www.sciencedirect.com/science/article/pii/S0925231224004144?dgcid=coauthor"> "Formal verification of robustness and resilience of learning-enabled state estimation systems" </a>, Neurocomputing, 585, 127643. <br>
-•	Yi Dong, Ronghui Mu, Gaojie Jin, Yi Qi, Jinwei Hu, Xingyu Zhao, Jie Meng, Wenjie Ruan, Xiaowei Huang (2024). <a href = "https://arxiv.org/abs/2402.01822"> "Building Guardrails for Large Language Models" </a>, arXiv preprint arXiv:2402.01822 <br>
-•	Jie Meng, Kai Chen (2024). <a href= "https://www.sciencedirect.com/science/article/pii/S0969698924000626?dgcid=author"> "Rethinking Preemptive Consumption: Building Mechanisms of Reciprocity, Contextuality, and Risk Hedging Across Scenarios"</a>, Journal of Retailing and Consumer Services, Vol.78.<br>
-•	Zirui Wang, Jie Meng, (2023). <a href= 'https://www.tandfonline.com/doi/full/10.1080/09647775.2023.2269164'>"Dialogues with Cultural Heritage via Museum Digitalisation: Developing a Model of Visitors’ Cognitive Identity, Technological Agent, Cultural Symbolism, and Public Engagement"</a>, Museum Management and Curatorship, 1-24. <br>
-•	Ying Feng, Jie Meng, (2023). <a href= 'https://journals.sagepub.com/doi/10.1177/10949968231156530?utm_source=selligent&utm_medium=email&utm_campaign=&utm_content=&utm_term=&m_i=B6i2uwPM12Iop5lE9lWUEAJJFexOb1lYIFSL2TTIiaRgqc2DfmGXuqQmtRTcpzExgfE0IHuiZgt0mtn3mjYbL%2BLYYUtDLBD26_7BBb&M_BT=30242439363264'> "Will Social Distancing in Service Encounters Affect Consumers'Value Perception During the COVID-19 Pandemic? The Role of Servicescape, Self-efficacy, and Technological Intervention"</a>, Journal of Interactive Marketing (ABS 3, Impact Score 11.318), 58(2-3), 167-184.<br>
-•	Jie Meng, (2022). <a href= 'https://hdl.handle.net/2134/19435013'>"The More We Know, the More Likely We May Agree?"</a>, accepted by Telematics and Informatics (Impact Score 9.14, Q1 in Computer Sciences, Q1 in Engineering),70,101807. <br>
-•	Jie Meng, (2022). <a href= 'https://www.igi-global.com/article/how-far-can-the-message-go-through-online-communication/299323'>"How Far Can the Message Go Through Online Communication: Simulation Outcomes of Information Stickiness"</a>, Journal of Global Information Management (ABS-2, Impact Score 3.03), 30(1), 1-22.<br>
-•	Youcheng Sun, Xingyu Zhao, Wenjie Ruan, Xiaowei Huang, Jie Meng, (2022).<a href= 'https://lupin.lboro.ac.uk/viewobject.html?id=370598&cid=1'>"Coverage Guided Testing for Recurrent Neural Networks"</a>, IEEE Transactions on Reliability (Q1 in Safety, Risk, Reliability and Quality, Impact Score 5.883), 71(3), 1191-1206, doi: 10.1109/TR.2021.3080664 <br>
-•	Jie Meng, (2022). <a href = 'https://repository.lboro.ac.uk/articles/journal_contribution/Information_acquisition_persuasion_and_group_conformity_of_online_tribalism_does_user_activeness_matter_/16930885'> "Information Acquisition, Persuasion, and Group Conformity of Online Tribalism: Does User Activeness Matter?"</a> International Journal of E-Business Research, 18(2), 1-23.<br> 
-•	Wei Huang, Yifan Zhou, Youcheng Sun, Alec Banks, Jie Meng, James Sharp, Simon Maskell, Xiaowei Huang, <a href = 'https://repository.lboro.ac.uk/articles/preprint/Formal_verification_of_robustness_and_resilience_of_learning-enabled_state_estimation_systems_for_robotics/16930933'> "Formal Verification of Robustness and Resilience of Learning-Enabled State Estimation Systems for Robotics" </a>, arXiv:2010.08311 <br> 
-•	Zhixuan Xu, Minghui Qian, Xiaowei Huang, Jie Meng, (2022). <a href = 'https://repository.lboro.ac.uk/articles/preprint/CasGCN_Predicting_future_cascade_growth_based_on_information_diffusion_graph/16944034/1'> "CasGCN: Predicting future cascade growth based on information diffusion graph" </a>, arXiv:2009.05152v1 <br>
-•	Jie Meng, Roger Layton, Yimin Huang. (2016). <a href= 'https://www.sciencedirect.com/science/article/pii/S0969698916300133?casa_token=aKPBqPN54qAAAAAA:K8oxTusynW1vJvFhbV-f3VkebPDaOVd5_O13YtvNnZNjsNAvwT7IG3nCDXoz7GxPVilwxXwQTA'> "Why do some consumers shop in this pharmacy for health-products? A cross-check of vulnerable characteristics and store types" </a>, Journal of Retailing and Consumer Services., Vol 30 (May), pp. 116-130. <br>
-•	Heng Lian, Taeryon Choi, Jie Meng, Seongil Jo. (2016). <a href= 'https://www.sciencedirect.com/science/article/pii/S0047259X16300227'> "Posterior Convergence for Bayesian Functional Linear Regression. 
-Journal of Multivariate Analysis" </a>, Vol. 150 (Sep), pp. 27-41.<br>
-•	Heng Lian, Jie Meng, & Zengyan Fan. (2015). <a href= 'https://www.sciencedirect.com/science/article/pii/S0047259X15001554'> "Simultaneous estimation of linear conditional quantiles with penalized splines" </a>. Journal of Multivariate Analysis, 141 (na), pp.1-21.  <br>
-•	Heng Lian, Jie Meng, Kaifeng Zhao, (2015). <a href= 'https://www.sciencedirect.com/science/article/pii/S0047259X15001566'> "Spline estimator for simultaneous variable selection and constant coefficient identification in high-dimensional generalized varying-coefficient models" </a>, Journal of Multivariate Analysis, Vol. 141, Iss. C, pp. 81-103. <br>
-•	Jie Meng. (2015). <a href= 'https://journals.sagepub.com/doi/full/10.1177/0276146714541128?casa_token=XM4hHEl4EnMAAAAA%3ALnLAbTdCYLYaF0in7vhk3lQ1Pkp65ZwPTDvmdZ8FN4xyw7Rjz-WuYEhWB1ZDJY7vTfgNbOlbvK4g'> "Sustainability: A framework of typology based on efficiency and effectiveness" </a>, Journal of Macromarketing. Vol. 35, Iss:1, pp. 84-98. <br>
-•	Peng Lai, Jie Meng, and Heng Lian. (2015). <a href= 'https://www.sciencedirect.com/science/article/pii/S0167715214003198?casa_token=Zg7v4escA0wAAAAA:bO1D-SFBLUWqbGHHnqcshwOHYJJzPThSerabYQ4kRQbsfcsDG1QpRrxo9PYFAbUurJ4moA01mQ'> "Polynomial spline approach for variable selection and estimation in varying coefficient models for time series data" </a>, Statistics and Probability Letters. Vol. 96 (Jan), pp. 21-27.<br>
-•	Jie Meng, Roger Layton. (2011). <a href= 'https://www.emerald.com/insight/content/doi/10.1108/09555341111158128/full/html?casa_token=ujTfgrnAsdYAAAAA:0_2R-MOZd1xasB8Z6RS8iBhlZtiRB18AB2pj92h8XdsABzCd1sYHRz-YmuPrfsZrkxXZiiRxN4f4guzNMNtO6PpxSO-T0ptPFXSC0nGSEb06rzjXtw8'> "Understand manager's marketing strategy choice in a collaborated competition industry: linking context awareness with general strategy" </a>, European Business Review. Vol. 23 Iss: 5, pp.477-501.<br>
-<br>
-<br>
-<br>
-<h3> Conference Paper </h3>
-<br>
-	Ruyu Yun, Jie Meng. Awe in Augmented Reality: Unlocking Consumer Possible Selves, AMA Summer Academic Conference, Chicago, IL, August 22-24, 2025.<br>
-	Ruyu Yun, Jie Meng. Inspiring Consumer Possible Selves in Augmented Reality with Awe, GMC Conference, Hong Kong, China, July 24-27, 2025. <br>
-	Ying Feng, Jie Meng. Exploring the Dimensions of Technological Anthropomorphism: Insights into Human-Agent Interaction and Consumer Behaviour, ACR, Paris, France, Sep 26-29, 2024. <br>
-	Ruyu Yun, Jie Meng, Exploring AR Liminoid Spaces: A Study on Consumer Possible Selves in the Metaverse, Track Digital Marketing & Social Media, the EMAC Annual Conference 2024, Bucharest, Romania, May 28-31, 2024. <br>
-	Ruyu Yun, Jie Meng, Realizing Daydreams: Empirical Evidence on Consumer Possible Identity Exploration and Brand Attitude through Immersive Technologies, AMA Summer Academic Conference, Boston, USA. August 16-18, 2024.<br>
-	Yi Dong, Ronghui Mu, Gaojie Jin, Yi Qi, Jinwei Hu, Xingyu Zhao, Jie Meng, Wenjie Ruan, Xiaowei Huang, Building Guardrails for Large Language Models, The Forty-first International Conference on Machine Learning (ICML), Vienna, Austria, July 21-27, 2024.<br>  
-	Ying Feng, Jie Meng, Choosing the Perfect Coach: Real Person, Avatar, Humanoid Robot or Robot Dog? Empirical Studies of Para-social Relationship Formation in Exercise Experience, AMA Summer Conference, San Francisco USA, August 4-6, 2023.<br>
-	Ying Feng, Jie Meng, Impact of Digital Agent’s Types and Humanoid Features on Parasocial Relationship: Evidence of Online Gym Exercises, EMAC Annual Conference, Track: Services Marketing, Odense, Denmark, May 23-26, 2023.<br>
-	Ruyu Yun, Jie Meng, Influencers versus Collective Atmospherics Impact on Buying Intentions in Livestreaming E-Commerce: An Integrated Examination of Bandwagon and Halo Effects, EMAC Annual Conference, Track: Digital Marketing & Social Media, Odense, Denmark, May 23-26, 2023.<br>
-	Yilin Feng, Jie Meng, Priming Digital Identities for Assortment Recommendation: Development of Web-based Application of Data Collection Tool Capturing Consumer’s Identities against Brand and Influencer in Advertisin, EMAC Annual Conference, Track: Methods, Modelling & Marketing Analytics, Odense, Denmark, May 23-26, 2023.<br>
-	Ruyu Yun, Jie Meng, An Investigation of Influencers to Audience and Audience to Audience Interaction Mechanism in Livestream E-Commerce, 2023 Global Marketing Conference, Track:Consumer Behavior in the Technological World, Seoul, Korea, 2023.<br>
-	Jie Meng, How Does Distance Matter to Third-place Experience? Role of Seat Arrangements and Social Distancing Sinages, 2023 Global Marketing Conference, Track: Marketing in a Social and Virtual Space, Seoul, Korea, 2023.<br>
-	Jie Meng, Exploring The Data Authorisation to Third-Market in Cookies Marketing: Role of Trust on Platform, Business’s Privacy Assurance, Consumer Controllability and Reward, 2023 Global Marketing Conference, Track: Consumer Behavior in the Technological World, Seoul, Korea, 2023.<br>
-	Jie Meng, Yik Shun Ma, Examining the Effectiveness of Fashion Marketing on Social Media: 
-An Experiment on Influencer’s Reputation, Post Type, and Online eWOM Valence, Global Fashion Management 
-Conference, Paris, France, 2019.<br>
-	Jie Meng, Jiaying Wang, Adopting Dissonance -Solving Approach to Investigate Luxury Social Media Advertising: 
-Role of Gaps in Self, Projective Self, Influencer and Brand Image, Global Fashion Management Conference, Paris, France, 2019. <br>
-	Jie Meng, Emily Cooper, Yan Sun, Experiments on the effectiveness of marketing communications tactics to support 
-‘unappealing’ animals, 48th EMAC Annual Conference, Hamburg, Germany, 2019.<br>
-	Jie Meng, Information-based and conformity-based delight of online tribalism: The effect on self-and social identity 
-moderated by user activeness, Global Marketing Conference, Tokyo, Japan, 2018. <br>
-	Jie Meng, How will polarised word-of-mouth evolve mild? A simulated experiment of information preference, decay speed, 
-and halo effect, 47th EMAC Annual Conference, Glasgow, UK, 2018.<br>
-	Jie Meng, Minghui Qian, Zhixuan Xu, Experiment on information stickiness in word-of-mouth transmission, the 5th 
-Business Systems Laboratory International Symposium, Naples, Italy, 2018. <br>
-	Minghui Qian, Zhixuan Xu, and Jie Meng, Using active FSVM learning method to elicit individual tacit knowledge of brand 
-consideration, the 5th Business Systems Laboratory International Symposium, Naples, Italy, 2018. <br>
-	Xiaowei Huang, Qingliang Chen, Jie Meng and Kaile Su, Reconfigurability in reactive multiagent systems, International 
-Joint Conference on Artificial Intelligence (IJCAI), New York, USA, 2017.<br>
-	Jie Meng, Roger Layton, Multi-level patterns of efficiency and effectiveness of a marketing system, 41st Macromarketing 
-Conference, Dublin, Ireland, 2016.<br>
-	Jie Meng, Hume Winzar, Assortment, location and price differentiation and impacts on macro patterns of efficiency and 
-effectiveness: an experiment through agent-based models, New Zealand Marketing Academy Conference (ANZMAC), Sydney, Australia, 2015.<br>
-	Jie Meng, Retail competition in price and assortment and evolution: a simulated experiment, Annual Complexity in Business Conference, 
-Washington, DC, US, 2015.<br>
-	Jie Meng, Efficiency, effectiveness, and sustainable marketing: a literature review, New Zealand Marketing Academy 
-Conference (ANZMAC), Brisbane, 2014.<br>
-	Jie Meng, Vulnerable consumers and the retail pharmacy selection process, 
-New Zealand Marketing Academy Conference (ANZMAC), Perth, Australia, 2011.<br>
-	Jie Meng, Is pharmacy’s role approaching convergent or diversified: an overall examination of marketing 
-efficiency and effectiveness by assortments analysis in urban China, Academy of Marketing Conference (AMC), Coventry, UK, 2010.<br>
-	Jie Meng, Unmasking urban Chinese consumers’ assortment and pharmacy choices, China and India Consumer Insight (CICI), 
-Tsinghua University & Yale School of Management, Beijing, China, 2010.<br>
-	Roger Layton, Zhirong Duan, Jie Meng, The contemporary research in marketing systems, International Symposium of 
-Marketing Sciences (ISMM), Tianjin, China, 2009.<br>
-	Jie Meng, An empirical examination for the collaboration and competition in pharmacy marketing system: 
-linking survey data with agent-based modelling, Collaborative Agents-Research and Development (CARE), Australasian 
-Joint Conference of Artificial Intelligence (AI’09), Melbourne, 2009.<br>
-	Zhirong Duan, Jie Meng, Should variety-seeking be encouraged to promote less popular destinations? Australian & New 
-Zealand Marketing Academy Conference (ANZMAC), 2009, Melbourne, Australia.<br>
-	Jie Meng, The embedded structure and emergent patterns of marketing system: an interpretation of empirical-based 
-agent-based modelling, Australian & New Zealand Marketing Academy Conference (ANZMAC), 2008, Sydney, Australia.<br>
-	Jie Meng, An overview of marketing system’s performance: efficiency and effectiveness, Australian & New Zealand 
-Marketing Academy Conference (ANZMAC), 2008, Sydney, Australia.<br>
 
-<br>
-<br>
-<br>
+    <div class="two-col">
+      <div class="highlight-card">
+        <h3>Guest Editor — Internet Research</h3>
+        <p>Special Issue: <a href="https://www.emerald.com/intr/issue/35/4">"Digital Transformation of Firms"</a>, Vol. 35, Issue 4, pp. 1429–1721. Impact Factor 6.773. Guest Editors: Yonggui Wang, Si Shi, Xiang (Robert) Li, and Jie Meng.</p>
+      </div>
+      <div class="highlight-card">
+        <h3>MDPI Topic Editor</h3>
+        <p><a href="https://www.mdpi.com/topics/social_network">"Complex Networks and Social Networks"</a>, 2024. Topic Editors: Jie Meng, Xiaowei Huang, Minghui Qian, Zhixuan Xu.</p>
+      </div>
     </div>
-    
-<div id="Research Projects" class="tabcontent">
-    
-<h2>Recent Funding and Grants</h2>
 
-<br>
-<br>
-<h3> “Leverages and Concerns of Gen-AI's Application in Advertising”, Mid-Career Researcher Development Fund</h3>
-Funding Body: Loughborough University <br>
-PI:  Jie Meng<br>
-Duration: 2024 March to July <br>	
-Fund: GBP £7,500<br>	
-Ongoing<br>
-
-
-<h3>“Test Coverage Metrics for Artificial Intelligence - V2.0”</h3>
-Funding Body: DsTL <br>
-PI: Xiaowei Huang, CI: Jie Meng, Youchen Sun, Wenjie, Ruan	<br>
-Duration: 2019-2020 <br>	
-Fund: GBP £14,000<br>	
-Completed<br>
-
-<br>
-<br>
-<br>
-<h3>“Automated Verification and Synthesis of Smart Factories”</h3>
-Funding Body: National Natural Science Foundation of China Research (NSFC) <br>
-Grant No. 61772232/F020101<br>	
-Investigators: Xiaowei Huang, Jie Meng, Ron van der Meyden	<br>
-Duration: 2018-2021 <br>	
-Fund: RMB￥750,000<br>	
-Completed <br>
-
+    <div class="highlight-card" style="margin-top:1.2rem;">
+      <h3>PhD Opportunities</h3>
+      <p>The Institute for Digital Technologies at Loughborough University London offers fully-funded PhD studentships in machine learning, data analytics, IoT, intelligent mobility, immersive technologies, and human behaviour analysis. Scholarship routes include CSC–Loughborough, EPSRC CDT/DTP/iCASE, Wellcome Trust, and Commonwealth Scholarships. <a href="https://www.lboro.ac.uk/study/postgraduate/apply/research-applications/">Contact Jie Meng</a> to discuss opportunities in computational advertising, AI behaviour, and HCI.</p>
     </div>
-    
+  </div>
 
-<div id="External Impact" class="tabcontent">
+  <!-- RESEARCH ── -->
+  <div id="tab-research" class="tab-section">
+    <h2 class="section-title">Research Projects &amp; Grants</h2>
+    <p class="section-sub">Current &amp; completed funded research</p>
 
+    <h3 class="subsection-title">Current Projects</h3>
 
-<h2>Workshop Organisation</h2>
-<br>
-(July-August/2019) Workshop on Digital Analytics and Simulation Research for MRes and doctoral students, 
-<a href="http://sirm.ruc.edu.cn/"> School of Information Resource Management </a>, <a href= "https://www.ruc.edu.cn/en"> Renmin University of China </a> <br>
-<br>
-<br>
-<br>
-<h2> Guest Editor </h2>
-•	Frontiers in Artificial Intelligence, Special Issue “AI’s Contribution to New Insights of Digital Behaviour and Service Economy” (https://www.frontiersin.org/research-topics/42571/ais-contribution-to-new-insights-of-digital-behavior-and-service-economy)<br>
-•	Internet Research, Special Issue of “Digital Transformation”, Deadline  2023 <br>
-•	MDPI topic "Complex Networks and Social Networks" (https://www.mdpi.com/topics/social_network) - CFP due July 2024<br>
-
-<br>
-<br>
-<br>
-<h2> Editorial Reviewer Board</h2>
-•	Journal of Global Fashion Marketing (ABDC-B) since 2025 <br>
-<br>
-<br>
-<br>
-<h2> Ad Hoc Journal Reviewer</h2>
-•	International Journal of Marketing Research <br>
-•	European Marketing Journal <br>
-•	Internet Research <br>
-•	Technological Forecasting and Social Change <br>
-•	International Journal of Information Management <br>
-•	Production Planning and Control <br>
-•	Industrial Marketing Management <br>
-•	International Journal of Hospitality Management <br>
-•	Journal of Consumer Behavior <br>
-•	Journal of Macromarketing <br>
-•	Computer in Human Behavior <br>
-•	Journal of Consumer Affairs <br>
-•	Journal of Retailing and Consumer Services <br>
-•	Journal of Digital Economy <br>
-•	Frontiers in Psychology <br>
-•	Sustainability <br>
-
-<br>
-<br>
-<br>
-<h2> Other Activities </h2>
-•	Invited Lecture on "Neuromarketing and Eye-Tracking Approach to Collect Real Response", Middlesex University London, 2025 <br>
-•	Invited book review: Creating Value with Big Data Analytics, Routledge.<br>
-•	Invited guest editor for a special issue in Frontiers in Artificial Intelligence,later 2022.<br>
-•	Invited guest editor for a special issue in Internet Research, later 2022. <br>
-•	Co-chair the Track of Service Marketing, China Marketing International Conference ( CMIC), China, 2019-2022. <br>
-•	Invited Workshop on “Digital Analytics and Simulation Research” for MRes and doctoral students in School of Information Resource Management, Renmin University of China, in person 2019, virtually 2020, 2021, and 2022<br>
-<br>
-<br>
-<br>
-<br>
-    
+    <div class="grant-card">
+      <span class="grant-status awarded">Awarded</span>
+      <div class="grant-title">Rare-Event Estimation in Large Language Models via Subset Simulation and Contrastive Unalignment</div>
+      <p style="font-size:0.85rem; color:#444; margin-bottom:0.4rem;">EPSRC–AISI Alignment Project. Investigators: Xiaowei Huang (Liverpool, PI), Jie Meng (Loughborough, PI)</p>
+      <div class="grant-meta">
+        <span>📅 March 2026 – March 2027</span>
+        <span>🏛 EPSRC – AISI</span>
+      </div>
+      <div class="grant-fund">£249,941.32 total</div>
     </div>
-    
-<div id="Teaching and Service" class="tabcontent">
 
-
-<h2>Teaching Calibre </h2>
-<br>
-<h3> SFHEA, PGCET,CMBE </h3>
-<br>
-<h3> Chief Programme Director, IDT, Loughorough University London </h3>
-<br>
-<h3> Current Leadership of Teaching at Loughborough University </h3>
-1.	Semester 1, 2019-now. Postgraduate, MSc Digital Marketing Programme. Strategic Marketing Management, Loughborough University London<br>
-2.	Semester 1, 2019-now. Postgraduate, MSc Digital Marketing Programme. Experience Design with Digital Technologies (formerly  named "Design Practices in Digital Industries"), Loughborough University London<br>
-3.	Semester 2, 2019-2020. Postgraduate, MSc Digital Marketing Programme. Strategy and Planning, Loughborough University London<br>
-4.  Semester 2, 2020-now. Postgraduate, MSc Digital Marketing Programme. Digital Technologies for Market Analysis, Loughborough University London<br>
-5.	Semester 1-2, 2020-2024. Doctoral Researcher, Research Method,Loughborough University London<br> 
-6.	Semester 2, 2020-now. Postgraduate, MSc Programmes in Institute for Digital Technologies, Dissertation, Loughborough University London<br>
-<br>
-<br>
-<br>
-<br>
-
-<h2>External Advisory Board or Other Activities</h2>
-•	Subject Board Examiner for "Management and Marketing", University of Durham 2023-2026<br>
-•   Subject Board Examiner for “Advertising and Marketing”, Lincoln University  2017-2021<br>
-•	Guest lecturer and Supervisor in Bristol University,2022 <br>
-•	Guest lecturer in Middlesex University, 2022, 2025 <br>
-•	Visiting Professor for RUC Summer School, Renmin University of China, 2022 till now <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+    <div class="grant-card">
+      <span class="grant-status ongoing">Ongoing</span>
+      <div class="grant-title">Unlocking Potential: Enhancing AI Training with Consideration of Trainees' Neurodiversity and Proactive Personality</div>
+      <p style="font-size:0.85rem; color:#444; margin-bottom:0.4rem;">PI: Prof. CHEN, Yifeng Nancy; CI: Jie Meng, Mike Crant. Project No. 13504225</p>
+      <div class="grant-meta">
+        <span>📅 Jan 2026 – Dec 2028</span>
+        <span>🏛 General Research Fund (GRF)</span>
+      </div>
+      <div class="grant-fund">HK$820,000</div>
     </div>
-    
-    
-    
+
+    <div class="grant-card">
+      <span class="grant-status ongoing">Ongoing</span>
+      <div class="grant-title">The Impact of Government and Enterprise Product Replacement Incentive Strategies on Green Smart Product Upgrade Purchases</div>
+      <p style="font-size:0.85rem; color:#444; margin-bottom:0.4rem;">PI: Shuang Ma; CI: Ying Hua, Fenmian Wang, Lei La, Jie Meng. Grant No. 72572033</p>
+      <div class="grant-meta">
+        <span>📅 2026 – 2029</span>
+        <span>🏛 NSFC</span>
+      </div>
+      <div class="grant-fund">CNY ¥480,000</div>
+    </div>
+
+    <div class="grant-card">
+      <span class="grant-status ongoing">Ongoing</span>
+      <div class="grant-title">A Re-investigation of Personality's Role in the AI-Advertising Era</div>
+      <p style="font-size:0.85rem; color:#444; margin-bottom:0.4rem;">PI: Jie Meng</p>
+      <div class="grant-meta">
+        <span>📅 March – July 2025</span>
+        <span>🏛 Loughborough Mid-Career Research Development Grant</span>
+      </div>
+      <div class="grant-fund">£7,500</div>
+    </div>
+
+    <h3 class="subsection-title">Completed Projects</h3>
+
+    <div class="grant-card">
+      <span class="grant-status completed">Completed</span>
+      <div class="grant-title">Test Coverage Metrics for Artificial Intelligence — V2.0</div>
+      <p style="font-size:0.85rem; color:#444; margin-bottom:0.4rem;">PI: Xiaowei Huang (Liverpool); CI: Jie Meng, Youcheng Sun, Wenjie Ruan</p>
+      <div class="grant-meta">
+        <span>📅 2019 – 2020</span>
+        <span>🏛 DsTL, Ministry of Defence, UK</span>
+      </div>
+      <div class="grant-fund">£14,000 (Loughborough share)</div>
+    </div>
+
+    <div class="grant-card">
+      <span class="grant-status completed">Completed</span>
+      <div class="grant-title">Automated Verification and Synthesis of Smart Factories</div>
+      <p style="font-size:0.85rem; color:#444; margin-bottom:0.4rem;">Investigators: Xiaowei Huang, Jie Meng, Ron van der Meyden. Grant No. 61772232/F020101</p>
+      <div class="grant-meta">
+        <span>📅 2018 – 2021</span>
+        <span>🏛 NSFC</span>
+      </div>
+      <div class="grant-fund">RMB ¥750,000</div>
+    </div>
+
+    <h3 class="subsection-title">Active Research Themes</h3>
+    <ul class="list-clean">
+      <li>Computational advertising on smart new media and recommendation systems</li>
+      <li>Online information exchange, social impacts, cookies marketing and data ecosystems</li>
+      <li>Cognitive diversity and AI; multimodal learning for equality, diversity and inclusiveness</li>
+      <li>Brand image, self-construal and projection on individual behaviours</li>
+      <li>Content engagement in marketing/retailing via eye-tracking</li>
+      <li>Human–AI collaboration and practices across scenarios</li>
+      <li>LLMs and applications in agent–human communication and human behaviour simulation</li>
+    </ul>
+  </div>
+
+  <!-- PUBLICATIONS ── -->
+  <div id="tab-publications" class="tab-section">
+    <h2 class="section-title">Publications</h2>
+    <p class="section-sub">Selected journal papers</p>
+
+    <div class="pub-item">
+      <div class="pub-year">2026</div>
+      <div class="pub-content">
+        <div class="pub-title">Beyond Consent: How Trust, Privacy Assurance, and Rewards Shape Consumer Data Sharing</div>
+        <div class="pub-authors">Yu Shao, Jie Meng</div>
+        <div class="pub-journal">Electronic Commerce Research and Applications (forthcoming)</div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2025</div>
+      <div class="pub-content">
+        <div class="pub-title"><a href="https://link.springer.com/article/10.1007/s10462-025-11389-2">Safeguarding Large Language Models: A Survey</a></div>
+        <div class="pub-authors">Yi Dong, Ronghui Mu, Yanghao Zhang et al., Jie Meng, Xiaowei Huang</div>
+        <div class="pub-journal">Artificial Intelligence Review</div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2025</div>
+      <div class="pub-content">
+        <div class="pub-title"><a href="https://www.tandfonline.com/doi/full/10.1080/10864415.2025.2556645">Investigating the Streamer's Halo and Viewer's Bandwagon Effects in Live Stream Sales</a></div>
+        <div class="pub-authors">Ruyu Yun, Jie Meng</div>
+        <div class="pub-journal">International Journal of Electronic Commerce</div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2025</div>
+      <div class="pub-content">
+        <div class="pub-title"><a href="https://www.emerald.com/intr/article-abstract/doi/10.1108/INTR-11-2024-1843/1338381">Can AI Alleviate Loneliness? The Role of Psychological Closeness, Co-presence, and Enjoyment in Digital Workout Environment</a></div>
+        <div class="pub-authors">Ying Feng, Jun-Hwa Cheah, Tippayanet Sorosrungruang, Senmao Xia, Jie Meng</div>
+        <div class="pub-journal">Internet Research</div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2025</div>
+      <div class="pub-content">
+        <div class="pub-title"><a href="https://doi.org/10.1108/INTR-08-2025-996">Navigating the Digital Transformation Maze: An Editorial on Strategy, Execution, and Impact for Firms</a></div>
+        <div class="pub-authors">Yonggui Wang, Si Shi, Xiang (Robert) Li, Jie Meng</div>
+        <div class="pub-journal">Internet Research (ABS-3, Q1, IF 5.9)</div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2024</div>
+      <div class="pub-content">
+        <div class="pub-title"><a href="https://doi.org/10.1002/mar.22154">From Virtual Trainers to Companions? Examining How Digital Agency Types, Anthropomorphism, and Support Shape Para-social Relationships in Online Fitness</a></div>
+        <div class="pub-authors">Ying Feng, Jie Meng, Jun-Hwa Cheah</div>
+        <div class="pub-journal">Psychology and Marketing</div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2024</div>
+      <div class="pub-content">
+        <div class="pub-title"><a href="https://arxiv.org/abs/2402.01822">Building Guardrails for Large Language Models</a></div>
+        <div class="pub-authors">Yi Dong, Ronghui Mu, Gaojie Jin et al., Jie Meng, Wenjie Ruan, Xiaowei Huang</div>
+        <div class="pub-journal">ICML 2024 · arXiv:2402.01822</div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2024</div>
+      <div class="pub-content">
+        <div class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S0969698924000626">Rethinking Preemptive Consumption: Building Mechanisms of Reciprocity, Contextuality, and Risk Hedging Across Scenarios</a></div>
+        <div class="pub-authors">Jie Meng, Kai Chen</div>
+        <div class="pub-journal">Journal of Retailing and Consumer Services, Vol. 78</div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2023</div>
+      <div class="pub-content">
+        <div class="pub-title"><a href="https://www.tandfonline.com/doi/full/10.1080/09647775.2023.2269164">Dialogues with Cultural Heritage via Museum Digitalisation: Cognitive Identity, Technological Agent, Cultural Symbolism, and Public Engagement</a></div>
+        <div class="pub-authors">Zirui Wang, Jie Meng</div>
+        <div class="pub-journal">Museum Management and Curatorship</div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2023</div>
+      <div class="pub-content">
+        <div class="pub-title"><a href="https://journals.sagepub.com/doi/10.1177/10949968231156530">Will Social Distancing in Service Encounters Affect Consumers' Value Perception During COVID-19? Servicescape, Self-efficacy, and Technological Intervention</a></div>
+        <div class="pub-authors">Ying Feng, Jie Meng</div>
+        <div class="pub-journal">Journal of Interactive Marketing (ABS 3, IF 11.318), 58(2–3), 167–184</div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2022</div>
+      <div class="pub-content">
+        <div class="pub-title"><a href="https://hdl.handle.net/2134/19435013">The More We Know, the More Likely We May Agree?</a></div>
+        <div class="pub-authors">Jie Meng</div>
+        <div class="pub-journal">Telematics and Informatics (IF 9.14, Q1), 70, 101807</div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2022</div>
+      <div class="pub-content">
+        <div class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S0925231224004144">Formal Verification of Robustness and Resilience of Learning-Enabled State Estimation Systems</a></div>
+        <div class="pub-authors">Wei Huang, Yifan Zhou, Gaojie Jin, Youchen Sun, Jie Meng, Fan Zhang, Xiaowei Huang</div>
+        <div class="pub-journal">Neurocomputing, 585, 127643</div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2022</div>
+      <div class="pub-content">
+        <div class="pub-title"><a href="https://lupin.lboro.ac.uk/viewobject.html?id=370598&cid=1">Coverage Guided Testing for Recurrent Neural Networks</a></div>
+        <div class="pub-authors">Youcheng Sun, Xingyu Zhao, Wenjie Ruan, Xiaowei Huang, Jie Meng</div>
+        <div class="pub-journal">IEEE Transactions on Reliability (Q1), 71(3), 1191–1206</div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2016</div>
+      <div class="pub-content">
+        <div class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S0969698916300133">Why Do Some Consumers Shop in This Pharmacy for Health-Products? A Cross-check of Vulnerable Characteristics and Store Types</a></div>
+        <div class="pub-authors">Jie Meng, Roger Layton, Yimin Huang</div>
+        <div class="pub-journal">Journal of Retailing and Consumer Services, 30, 116–130</div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2015</div>
+      <div class="pub-content">
+        <div class="pub-title"><a href="https://journals.sagepub.com/doi/full/10.1177/0276146714541128">Sustainability: A Framework of Typology Based on Efficiency and Effectiveness</a></div>
+        <div class="pub-authors">Jie Meng</div>
+        <div class="pub-journal">Journal of Macromarketing, 35(1), 84–98</div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2011</div>
+      <div class="pub-content">
+        <div class="pub-title"><a href="https://www.emerald.com/insight/content/doi/10.1108/09555341111158128">Understand Manager's Marketing Strategy Choice in a Collaborated Competition Industry</a></div>
+        <div class="pub-authors">Jie Meng, Roger Layton</div>
+        <div class="pub-journal">European Business Review, 23(5), 477–501</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHD ── -->
+  <div id="tab-phd" class="tab-section">
+    <h2 class="section-title">PhD Supervision</h2>
+    <p class="section-sub">Current and recently completed doctoral researchers</p>
+
+    <h3 class="subsection-title">Doctoral Students</h3>
+    <div class="phd-grid">
+      <div class="phd-card">
+        <div class="phd-name">Ying Feng</div>
+        <div class="phd-project">Experimentalisation and Theorisation of Digital Agency in Web-based Communication</div>
+        <div><span class="phd-status completed">Completed</span></div>
+      </div>
+      <div class="phd-card">
+        <div class="phd-name">Ijeoma Ogiemwonyi</div>
+        <div class="phd-project">Cookieless Advertising and Optimisation</div>
+        <div><span class="phd-status completed">Completed</span></div>
+      </div>
+      <div class="phd-card">
+        <div class="phd-name">Yilin Feng</div>
+        <div class="phd-project">User Recommendation and Marketing Systems</div>
+        <div><span class="phd-status near">Near Completion</span></div>
+      </div>
+      <div class="phd-card">
+        <div class="phd-name">Simon Akudinobi</div>
+        <div class="phd-project">From Pixels to Personas: How Anthropomorphism Shapes Perceptions of Virtual Influencers' Authenticity and Credibility</div>
+        <div><span class="phd-status near">Near Completion</span></div>
+      </div>
+      <div class="phd-card">
+        <div class="phd-name">En Chen</div>
+        <div class="phd-project">Content Recommendation and Behavioural Outcomes of Cognitive Diversity</div>
+        <div><span class="phd-status active">3rd Year</span></div>
+      </div>
+      <div class="phd-card">
+        <div class="phd-name">Junding Liu</div>
+        <div class="phd-project">NFT and Network Transformation</div>
+        <div><span class="phd-status active">3rd Year</span></div>
+      </div>
+      <div class="phd-card">
+        <div class="phd-name">Yuexiang Wang</div>
+        <div class="phd-project">Granular Data and Digital Affordance in M-Commerce</div>
+        <div><span class="phd-status active">2nd Year</span></div>
+      </div>
+      <div class="phd-card">
+        <div class="phd-name">Weiyi Tian</div>
+        <div class="phd-project">How AI Collaborates with Cognitive and Affective Diversity</div>
+        <div><span class="phd-status active">2nd Year</span></div>
+      </div>
+      <div class="phd-card">
+        <div class="phd-name">Liang Xie</div>
+        <div class="phd-project">Gen-AI and Emotive Transfer via Multi-sensory Modelling</div>
+        <div><span class="phd-status first">1st Year</span></div>
+      </div>
+      <div class="phd-card">
+        <div class="phd-name">Victor Drummond</div>
+        <div class="phd-project">AI, Health Awareness and Self-Care</div>
+        <div><span class="phd-status first">1st Year</span></div>
+      </div>
+    </div>
+
+    <div class="highlight-card" style="margin-top:2rem;">
+      <h3>CSC–Loughborough Scholarship</h3>
+      <p>Loughborough University co-sponsors PhD studies via the China Scholarship Council scheme. See the <a href="https://www.lboro.ac.uk/study/postgraduate/fees-funding/research-degree-funding/china-scholarship-council/">university scholarship page</a> for current information. Application deadline is typically end of January for October entry. <a href="https://www.lboro.ac.uk/study/postgraduate/apply/research-applications/">Contact Jie Meng</a> to discuss research opportunities.</p>
+    </div>
+
+    <h3 class="subsection-title">Visiting Researchers</h3>
+    <ul class="list-clean">
+      <li>Dr. Naijuan Sun, Associate Professor, Heilongjiang University; Associate Research Fellow, Marketing Research Centre of China (MRCC)</li>
+      <li>Prof. Minghui Qian, Associate Professor, School of Information Resource Management, Renmin University of China; Director, MRCC</li>
+      <li>Dr. Huan Yan, Researcher, Industrial Economics Institute of CASS</li>
+    </ul>
+  </div>
+
+  <!-- IMPACT ── -->
+  <div id="tab-impact" class="tab-section">
+    <h2 class="section-title">External Impact</h2>
+    <p class="section-sub">Editorial, review, and public engagement activities</p>
+
+    <h3 class="subsection-title">Guest Editor</h3>
+    <ul class="list-clean">
+      <li><em>Frontiers in Artificial Intelligence</em> — Special Issue: "AI's Contribution to New Insights of Digital Behaviour and Service Economy"</li>
+      <li><em>Internet Research</em> — Special Issue: "Digital Transformation", Vol. 35, Issue 4 (published)</li>
+      <li><em>MDPI</em> — Topic: "Complex Networks and Social Networks" (CFP 2024)</li>
+    </ul>
+
+    <h3 class="subsection-title">Editorial Board</h3>
+    <ul class="list-clean">
+      <li>Journal of Global Fashion Marketing (ABDC-B) — since 2025</li>
+    </ul>
+
+    <h3 class="subsection-title">Ad Hoc Reviewer</h3>
+    <div class="two-col">
+      <ul class="list-clean">
+        <li>International Journal of Marketing Research</li>
+        <li>European Marketing Journal</li>
+        <li>Internet Research</li>
+        <li>Technological Forecasting and Social Change</li>
+        <li>International Journal of Information Management</li>
+        <li>Production Planning and Control</li>
+        <li>Industrial Marketing Management</li>
+        <li>International Journal of Hospitality Management</li>
+      </ul>
+      <ul class="list-clean">
+        <li>Journal of Consumer Behavior</li>
+        <li>Journal of Macromarketing</li>
+        <li>Computer in Human Behavior</li>
+        <li>Journal of Consumer Affairs</li>
+        <li>Journal of Retailing and Consumer Services</li>
+        <li>Journal of Digital Economy</li>
+        <li>Frontiers in Psychology</li>
+        <li>Sustainability</li>
+      </ul>
+    </div>
+
+    <h3 class="subsection-title">Other Activities</h3>
+    <ul class="list-clean">
+      <li>Invited Lecture: "Neuromarketing and Eye-Tracking Approach to Collect Real Response", Middlesex University London, 2025</li>
+      <li>Invited Workshop: "Digital Analytics and Simulation Research" for MRes/doctoral students, Renmin University of China — in person 2019; virtually 2020, 2021, 2022</li>
+      <li>Co-chair, Track of Service Marketing, China Marketing International Conference (CMIC), 2019–2022</li>
+      <li>Visiting Professor, RUC Summer School, Renmin University of China, 2022–present</li>
+      <li>Invited Book Review: <em>Creating Value with Big Data Analytics</em>, Routledge</li>
+    </ul>
+  </div>
+
+  <!-- TEACHING ── -->
+  <div id="tab-teaching" class="tab-section">
+    <h2 class="section-title">Teaching &amp; Service</h2>
+    <p class="section-sub">Curriculum leadership, modules, and external roles</p>
+
+    <h3 class="subsection-title">Teaching Qualifications</h3>
+    <ul class="list-clean">
+      <li>Senior Fellow of the Higher Education Academy (SFHEA)</li>
+      <li>Postgraduate Certificate in Education and Training (PGCET)</li>
+      <li>Certified Member of the British Academy of Management (CMBE)</li>
+      <li>Chief Programme Director, Institute of Digital Technologies, Loughborough University London</li>
+    </ul>
+
+    <h3 class="subsection-title">Modules at Loughborough University London</h3>
+    <ul class="list-clean">
+      <li>Strategic Marketing Management — MSc Digital Marketing, Semester 1, 2019–present</li>
+      <li>Experience Design with Digital Technologies — MSc Digital Marketing, Semester 1, 2019–present</li>
+      <li>Digital Technologies for Market Analysis — MSc Digital Marketing, Semester 2, 2020–present</li>
+      <li>Dissertation Supervision — MSc Programmes, IDT, Semester 2, 2020–present</li>
+      <li>Research Methods — Doctoral Researcher Programme, 2020–2024</li>
+      <li>Strategy and Planning — MSc Digital Marketing, Semester 2, 2019–2020</li>
+    </ul>
+
+    <h3 class="subsection-title">External Advisory &amp; Examining</h3>
+    <ul class="list-clean">
+      <li>Subject Board Examiner (Management &amp; Marketing), University of Durham, 2023–2026</li>
+      <li>Subject Board Examiner (Advertising &amp; Marketing), University of Lincoln, 2017–2021</li>
+      <li>Guest Lecturer &amp; Supervisor, University of Bristol, 2022</li>
+      <li>Guest Lecturer, Middlesex University, 2022, 2025</li>
+      <li>Visiting Professor, RUC Summer School, Renmin University of China, 2022–present</li>
+    </ul>
+  </div>
+
+</div><!-- /main -->
+
+<footer class="footer">
+  Jie Meng &nbsp;·&nbsp; Institute of Digital Technologies, Loughborough University London &nbsp;·&nbsp; E20 3BS, UK
+</footer>
+
 <script>
-function openPage(pageName,elmnt,color) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablink");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].style.backgroundColor = "";
-  }
-  document.getElementById(pageName).style.display = "block";
-  elmnt.style.backgroundColor = color;
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
 </script>
-
-
-
-
 </body>
 </html>
